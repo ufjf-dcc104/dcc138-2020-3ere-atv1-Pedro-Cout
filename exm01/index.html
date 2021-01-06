@@ -30,6 +30,9 @@
             ctx.fillStyle = "black";
             ctx.fillRect (0, 0, canvas.width, canvas.height);
 
+            //Atualiza Estado
+            x = x + 10 * dt;
+
             //Desenha Elementos
             ctx.fillStyle = "white";
             ctx.fillRect (x, 150, 20, 20);
