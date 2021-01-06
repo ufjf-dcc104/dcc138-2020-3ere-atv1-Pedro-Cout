@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DCC138 Exemplo01</title>
 </head>
+
 <body>
     <h1>DCC138 Exemplo01</h1>
     <canvas></canvas>
     <p>por Pedro Coutinho (2021)</p>
+
     <script>
-        let canvas = document.querySelector("canvas");
+        let canvas = document.querySelector ("canvas");
+        let ctx = canvas.getContext ("2d");
         canvas.width = 480;
         canvas.height = 320;
+
+        ctx.fillStyle = "black";
+        ctx.fillRect (0, 0, canvas.width, canvas.height);
+
     </script>
 </body>
+
 </html>
