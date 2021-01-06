@@ -17,9 +17,15 @@
         canvas.width = 480;
         canvas.height = 320;
         let x = 150;
-        desenha ();
+        let t0;
+        let dt;
+        requestAnimationFrame (desenha);
 
-        function desenha () {
+        function desenha (t) {
+            //if(t0 === undefined) t0 = t; Se t0 for indefinido usa valor abaixo (Operador de Coalescência Nula)
+            // que garante que valor t0 é iniciado.
+            t0 = t0 ?? t;
+            dt = (t - t0)/1000;
             //Desenha Fundo
             ctx.fillStyle = "black";
             ctx.fillRect (0, 0, canvas.width, canvas.height);
@@ -27,6 +33,9 @@
             //Desenha Elementos
             ctx.fillStyle = "white";
             ctx.fillRect (x, 150, 20, 20);
+
+            requestAnimationFrame (desenha);
+            t0 = t;
         }
         
     </script>
