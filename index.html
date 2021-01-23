@@ -46,25 +46,41 @@
         }
        
         addEventListener("keydown", teclaPressionada);
+        addEventListener("keyup", teclaSolta);
 
         function teclaPressionada(e) {
             //Adiciona controles de velocidades
-            console.log(e.Key);
-            switch(e.Key) {
-                case "arrowUp":
+            console.log(e.key);
+            switch(e.key) {
+                case "ArrowUp":
                     vy = -20;
                     break;
-                case "arrowDown":
+                case "ArrowDown":
                     vy = +20;
                     break;
-                case "arrowLeft":
+                case "ArrowLeft":
                     vx = -20;
                     break;
-                case "arrowRight":
+                case "ArrowRight":
                     vx = +20;
                     break;
-
-                    default:
+            }
+        }
+        function teclaSolta(e) {
+            //Adiciona controles de velocidades
+            console.log(e.key);
+            switch(e.key) {
+                case "ArrowUp":
+                    vy = 0;
+                    break;
+                case "ArrowDown":
+                    vy = 0;
+                    break;
+                case "ArrowLeft":
+                    vx = 0;
+                    break;
+                case "ArrowRight":
+                    vx = 0;
                     break;
             }
         }
