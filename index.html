@@ -28,19 +28,23 @@
             mover: moverElemento 
         };
         
-        let e = {
-            x  : 300,
-            vx : 0,
-            ax : 0,
-            y  : 200,
-            vy : 0,
-            ay : 0,
-            cor: "red",
-            desenhar: desenharElemento,
-            mover: moverElemento,
-            controlar: perseguirAlvo,
+        const sprites = [];
+        for(let ne = 0; ne < 20; ne++) {
+            let e = {
+                x  : canvas.width * Math.random(),
+                vx : 0,
+                ax : 0,
+                y  : canvas.height * Math.random(),
+                vy : 0,
+                ay : 0,
+                cor: "red",
+                desenhar: desenharElemento,
+                mover: moverElemento,
+                controlar: perseguirAlvo,
+            };
+            sprites.push(e);
         }
-        
+
         const K = 180;
         let t0;
         let dt;
@@ -55,18 +59,19 @@
             ctx.fillStyle = "black";
             ctx.fillRect (0, 0, canvas.width, canvas.height);
 
-            //Controladores
-            //e.controlar({x: 250, y: 120});
-            e.controlar(p);
-            
-            //Atualiza dinâmica dos Estados
             p.mover();
-            e.mover();
-
-            //Desenha Elementos
             p.desenhar();
-            e.desenhar();
-
+            for(let s = 0; s <sprites.length; s++) {
+                const sprite = sprites[s];
+                //Controladores
+                //sprite.controlar({x: 250, y: 120});
+                sprite.controlar(p);
+                //Atualiza dinâmica dos Estados
+                sprite.mover();
+                //Desenha Elementos
+                sprite.desenhar();
+            }
+            
             requestAnimationFrame (desenha);
             t0 = t;
         }
@@ -114,6 +119,7 @@
                     break;
             }
         }
+        
         function teclaSolta(event) {
             //Adiciona controles de velocidades
             console.log(event.key);
